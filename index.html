@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conviva Maya — Apostilas</title>
+<style>
+:root{
+  --n:#101827;--b:#2563eb;--g:#16a34a;--y:#d97706;--r:#dc2626;
+  --bg:#f4f7fb;--tx:#182230;--mut:#667085;--ln:#e5e7eb
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5}
+.hero{background:linear-gradient(135deg,#0b1220,#172554,#0e7490);color:#fff;padding:55px 7vw}
+.hero small{text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+.hero h1{font-size:clamp(35px,5vw,62px);line-height:1.02;margin:12px 0}
+.hero p{max-width:850px;font-size:18px;color:#dbeafe}
+.wrap{max-width:1180px;margin:auto;padding:25px 20px 70px}
+.box,.card,.ap{background:#fff;border:1px solid var(--ln);border-radius:18px;box-shadow:0 8px 28px #0f172a08}
+.box{padding:20px;margin:18px 0}
+.farol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.l{color:#fff;padding:20px;border-radius:16px;min-height:145px}
+.l h3{margin:0 0 8px}
+.g{background:linear-gradient(135deg,#15803d,#22c55e)}
+.y{background:linear-gradient(135deg,#b45309,#f59e0b)}
+.r{background:linear-gradient(135deg,#b91c1c,#ef4444)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px}
+
+/* Cards clicáveis */
+.card{
+  padding:20px;
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  position:relative;
+}
+a.card{cursor:pointer}
+a.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(15,23,42,.12);
+  border-color:#93c5fd;
+}
+a.card:hover .tag{background:#dbeafe}
+a.card .pdf-badge{
+  position:absolute;top:14px;right:14px;
+  font-size:10px;font-weight:800;letter-spacing:.06em;
+  background:#eff6ff;color:#1d4ed8;
+  padding:3px 8px;border-radius:99px;
+  border:1px solid #bfdbfe;
+}
+a.card:hover .pdf-badge{background:#2563eb;color:#fff;border-color:#2563eb}
+
+.num{font-size:12px;font-weight:800;color:var(--b);letter-spacing:.1em}
+.card h3{margin:4px 0}
+.mut{color:var(--mut)}
+.ap{margin:20px 0;overflow:hidden}
+.aph{padding:22px;background:linear-gradient(135deg,#f8fafc,#eef6ff);border-bottom:1px solid var(--ln)}
+.aph h3{margin:0;font-size:24px}
+.pages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
+.page{border:1px solid var(--ln);border-radius:14px;padding:15px}
+.page b{display:block;margin-bottom:7px}
+.page ul{margin:0;padding-left:18px}
+.page li{margin:4px 0}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}
+th{background:#f8fafc}
+.tag{display:inline-block;padding:4px 9px;background:#eff6ff;color:#1d4ed8;border-radius:99px;font-size:12px;font-weight:800;transition:background .2s}
+.foot{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--ln);padding-top:20px}
+@media(max-width:700px){.farol,.pages{grid-template-columns:1fr}.hero{padding:40px 6vw}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <small>Escola Maya Alice Ekman · Conviva Maya</small>
+  <h1>Uma coleção de apostilas.<br>Um papel claro para cada grupo.</h1>
+  <p>Projeto visual para transformar o Protocolo 179 em guias curtos, práticos e específicos para cada público da escola.</p>
+</header>
+
+<main class="wrap">
+  <div class="box"><b>Princípio:</b> cada apostila mostra o que o grupo precisa aprender, o que precisa executar, onde participa e o que pertence a outro nível de responsabilidade. É uma adaptação pedagógica do Protocolo 179, não sua reprodução integral.</div>
+
+  <h2>O Farol de Responsabilidades</h2>
+  <p class="mut">O mesmo código visual aparece em todas as apostilas.</p>
+  <div class="farol">
+    <div class="l g"><h3>🟢 EU EXECUTO</h3>O que este público deve aprender e efetivamente fazer dentro do seu papel.</div>
+    <div class="l y"><h3>🟡 EU PARTICIPO</h3>O que este público apoia, comunica ou acompanha, mas não conduz sozinho.</div>
+    <div class="l r"><h3>🔴 NÃO É MINHA RESPONSABILIDADE</h3>O que pertence a outro grupo ou exige atribuição específica.</div>
+  </div>
+
+  <div class="box"><b>Regra importante:</b> vermelho não significa “não me interessa”. Significa “não devo assumir isso sozinho”.</div>
+
+  <h2>As 9 apostilas</h2>
+  <p class="mut" style="margin-top:-6px;margin-bottom:14px">Clique no card para abrir a apostila.</p>
+  <div class="grid">
+
+    <a class="card" href="apostilas/01-equipe-gestora.html" target="_blank" rel="noopener" title="Abrir apostila da Equipe Gestora">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">01</span>
+      <h3>Equipe Gestora</h3>
+      <p class="mut">Acolher, avaliar, registrar, encaminhar, articular e acompanhar.</p>
+      <span class="tag">Gestão do fluxo</span>
+    </a>
+
+    <a class="card" href="apostilas/02-professores.html" target="_blank" rel="noopener" title="Abrir apostila de Professores">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">02</span>
+      <h3>Professores</h3>
+      <p class="mut">Prevenir, observar, acolher inicialmente, comunicar e atuar pedagogicamente.</p>
+      <span class="tag">Sala de aula</span>
+    </a>
+
+    <a class="card" href="apostilas/03-funcionarios-efetivos.html" target="_blank" rel="noopener" title="Abrir apostila de Funcionários efetivos">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">03</span>
+      <h3>Funcionários efetivos do Estado</h3>
+      <p class="mut">Perceber, proteger dentro do papel, comunicar e preservar o sigilo.</p>
+      <span class="tag">Servidor escolar</span>
+    </a>
+
+    <a class="card" href="apostilas/04-funcionarios-terceirizados.html" target="_blank" rel="noopener" title="Abrir apostila de Funcionários terceirizados">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">04</span>
+      <h3>Funcionários terceirizados</h3>
+      <p class="mut">Perceber, preservar a própria segurança e comunicar.</p>
+      <span class="tag">Comunicação</span>
+    </a>
+
+    <a class="card" href="apostilas/05-gremio-estudantil.pdf" target="_blank" rel="noopener" title="Abrir apostila do Grêmio Estudantil (PDF)">
+      <span class="pdf-badge">PDF</span>
+      <span class="num">05</span>
+      <h3>Grêmio Estudantil</h3>
+      <p class="mut">Representar, escutar, promover prevenção e levar demandas à escola.</p>
+      <span class="tag">Liderança</span>
+    </a>
+
+    <a class="card" href="apostilas/06-alunos.html" target="_blank" rel="noopener" title="Abrir apostila de Alunos">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">06</span>
+      <h3>Alunos</h3>
+      <p class="mut">Conhecer direitos, respeitar, pedir ajuda e não resolver situações graves.</p>
+      <span class="tag">Proteção entre pares</span>
+    </a>
+
+    <a class="card" href="apostilas/07-lideres-de-sala.html" target="_blank" rel="noopener" title="Abrir apostila de Líderes de Sala">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">07</span>
+      <h3>Líderes de Sala</h3>
+      <p class="mut">Ser ponte entre turma, representação estudantil e escola.</p>
+      <span class="tag">Representação</span>
+    </a>
+
+    <a class="card" href="apostilas/08-conselho-de-escola.html" target="_blank" rel="noopener" title="Abrir apostila do Conselho de Escola">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">08</span>
+      <h3>Conselho de Escola</h3>
+      <p class="mut">Participar, discutir problemas coletivos, propor e acompanhar ações.</p>
+      <span class="tag">Participação</span>
+    </a>
+
+    <a class="card" href="apostilas/09-apm.html" target="_blank" rel="noopener" title="Abrir apostila da APM">
+      <span class="pdf-badge">ABRIR</span>
+      <span class="num">09</span>
+      <h3>APM</h3>
+      <p class="mut">Apoiar projetos, famílias, prevenção e participação comunitária.</p>
+      <span class="tag">Comunidade</span>
+    </a>
+
+  </div>
+
+  <h2>Ferramenta: Quem faz o quê?</h2>
+  <div class="box">
+    <table>
+      <tr><th>Situação</th><th>Atuação inicial</th><th>Encaminhamento</th></tr>
+      <tr><td>Conflito de convivência</td><td>Reconhecer, comunicar e atuar dentro do próprio papel.</td><td>Seguir o fluxo da escola quando ultrapassar sua atuação.</td></tr>
+      <tr><td>Bullying/cyberbullying</td><td>Não incentivar, não expor, acolher e comunicar.</td><td>Apuração e encaminhamentos por quem possui atribuição institucional.</td></tr>
+      <tr><td>Ameaça ou risco grave</td><td>Priorizar segurança e comunicar imediatamente.</td><td>Gestão e órgãos competentes conforme o caso.</td></tr>
+      <tr><td>Violação de direitos</td><td>Evitar exposição/revitimização e comunicar.</td><td>Gestão articula os encaminhamentos e a rede de proteção.</td></tr>
+      <tr><td>Acidente/emergência</td><td>Proteger-se, pedir ajuda e seguir o fluxo.</td><td>Atendimento especializado quando necessário.</td></tr>
+    </table>
+  </div>
+
+  <h2>Estrutura-padrão de cada apostila — até 10 páginas</h2>
+  <div class="grid">
+    <div class="card"><b>1 · Capa</b><p class="mut">Identidade CONVIVA MAYA + público.</p></div>
+    <div class="card"><b>2 · Por que isso importa?</b><p class="mut">O papel daquele grupo.</p></div>
+    <div class="card"><b>3 · 🟢 Eu executo</b><p class="mut">Competências práticas.</p></div>
+    <div class="card"><b>4 · 🟢 Como fazer</b><p class="mut">Passos simples e exemplos.</p></div>
+    <div class="card"><b>5 · 🟡 Eu participo</b><p class="mut">Atuação compartilhada.</p></div>
+    <div class="card"><b>6 · 🔴 Não é minha responsabilidade</b><p class="mut">Limites claros.</p></div>
+    <div class="card"><b>7 · 🚨 Aconteceu. E agora?</b><p class="mut">Fluxo visual de resposta.</p></div>
+    <div class="card"><b>8 · 🔎 Quem faz o quê?</b><p class="mut">Matriz de responsabilidades.</p></div>
+    <div class="card"><b>9 · Checklist</b><p class="mut">Consulta rápida.</p></div>
+    <div class="card"><b>10 · 📞 Rede de ajuda</b><p class="mut">Contatos oficiais definidos pela escola.</p></div>
+  </div>
+
+  <h2>Detalhamento por público</h2>
+
+  <div class="ap"><div class="aph"><h3>01 · Equipe Gestora</h3><span class="mut">Manual de condução, registro, encaminhamento e acompanhamento.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Acolhimento e escuta</li><li>Avaliação inicial</li><li>Proteção</li><li>Registro e acompanhamento</li></ul></div><div class="page"><b>🟡 Eu participo/articulo</b><ul><li>Professores e servidores</li><li>Famílias</li><li>Grêmio e Conselho</li><li>Rede de proteção</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Substituir investigação policial</li><li>Substituir atendimento clínico especializado</li><li>Substituir decisão judicial</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>02 · Professores</h3><span class="mut">Prevenção, observação, acolhimento inicial e comunicação.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Prevenção em sala</li><li>Observação</li><li>Acolhimento inicial</li><li>Comunicação à gestão</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Mediação compatível com o papel pedagógico</li><li>Projetos de convivência</li><li>Acompanhamento</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar denúncias</li><li>Interrogar envolvidos</li><li>Fazer diagnóstico clínico</li><li>Expor estudantes</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>03 · Funcionários efetivos do Estado</h3><span class="mut">Servidor como agente de proteção e comunicação.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Observar</li><li>Identificar</li><li>Comunicar</li><li>Preservar sigilo</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Prevenção</li><li>Convivência</li><li>Projetos</li><li>Apoio solicitado</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar</li><li>Interrogar</li><li>Conduzir sozinho casos graves</li><li>Avaliação clínica</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>04 · Funcionários terceirizados</h3><span class="mut">Perceber, preservar a segurança e comunicar.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Observar</li><li>Proteger-se</li><li>Comunicar imediatamente</li><li>Seguir orientações</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Apoio ao ambiente</li><li>Comunicação de situações</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar</li><li>Interrogar</li><li>Punir</li><li>Decidir encaminhamentos</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>05 · Grêmio Estudantil</h3><span class="mut">Representação, escuta, participação e prevenção.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Escutar estudantes</li><li>Representar demandas</li><li>Promover campanhas</li><li>Comunicar problemas</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Projetos de convivência</li><li>Ações preventivas</li><li>Discussões de clima</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar</li><li>Punir</li><li>Apurar “quem está certo”</li><li>Expor vítimas</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>06 · Alunos</h3><span class="mut">Direitos, deveres, convivência e pedido de ajuda.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Respeitar</li><li>Não incentivar violência</li><li>Pedir ajuda</li><li>Comunicar risco</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Projetos</li><li>Campanhas</li><li>Grêmio</li><li>Representação</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar colegas</li><li>Confrontar agressor</li><li>Fazer justiça pelas próprias mãos</li><li>Espalhar denúncias</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>07 · Líderes de Sala</h3><span class="mut">Representação da turma e comunicação responsável.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Ouvir a turma</li><li>Identificar demandas coletivas</li><li>Levar questões à escola</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Reuniões</li><li>Campanhas</li><li>Projetos</li><li>Ações de convivência</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar</li><li>Julgar</li><li>Punir</li><li>Resolver violência grave</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>08 · Conselho de Escola</h3><span class="mut">Participação democrática e acompanhamento coletivo.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Participar</li><li>Discutir problemas coletivos</li><li>Propor ações</li><li>Acompanhar ações</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Diagnóstico de clima</li><li>Projetos preventivos</li><li>Articulação comunitária</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar denúncias individuais</li><li>Interrogar estudantes</li><li>Substituir órgãos especializados</li></ul></div></div></div>
+
+  <div class="ap"><div class="aph"><h3>09 · APM</h3><span class="mut">Participação das famílias e apoio às ações da escola.</span></div><div class="pages"><div class="page"><b>🟢 Eu executo</b><ul><li>Apoiar projetos</li><li>Participar da comunidade</li><li>Apoiar prevenção</li><li>Fortalecer participação familiar</li></ul></div><div class="page"><b>🟡 Eu participo</b><ul><li>Campanhas</li><li>Projetos</li><li>Ações com famílias</li><li>Parcerias comunitárias</li></ul></div><div class="page"><b>🔴 Não é minha responsabilidade</b><ul><li>Investigar ocorrências</li><li>Apurar denúncias</li><li>Punir estudantes</li><li>Substituir gestão ou rede</li></ul></div></div></div>
+
+  <div class="box">
+    <h2>Mensagem central</h2>
+    <p><b>🟢 Eu sei o que fazer.</b> Conheço meu papel e executo o que me cabe.</p>
+    <p><b>🟡 Eu sei quando participar e encaminhar.</b> Não assumo sozinho uma responsabilidade de outro grupo.</p>
+    <p><b>🔴 Eu sei meu limite.</b> Não improviso, não investigo, não exponho e não substituo quem possui atribuição específica.</p>
+  </div>
+
+  <div class="foot">
+    <b>Base:</b> DOC – Conviva Protocolo 179 – 3ª versão, SEDUC-SP. Projeto editorial/pedagógico para a Escola Maya. Antes da impressão, os fluxos internos e contatos oficiais da unidade devem ser conferidos e inseridos.
+  </div>
+</main>
+</body>
+</html>
