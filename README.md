@@ -2,41 +2,51 @@
 
 Material pedagógico da **Escola Maya Alice Ekman** baseado no DOC – Protocolo 179 (3ª versão) do CONVIVA SP / SEDUC-SP.
 
-Site em produção: [protocolo179.netlify.app](https://protocolo179.netlify.app)
+## Site no GitHub Pages
 
-## Conteúdo
+Depois de ativar o GitHub Pages (veja abaixo), o site fica em:
 
-### Página principal
-- `conviva_maya_apostilas_protocolo_179.html` — coleção das 9 apostilas (cards clicáveis)
+**https://mayaaliceekman.github.io/conviva/**
 
-### Quiz
-- `quiz_protocolo_179_escola_maya_v2.html` — quiz interativo com sons e feedback visual
+| Página | URL |
+|--------|-----|
+| Apostilas (home) | `/` ou `/index.html` |
+| Quiz | `/quiz.html` |
+| Apostilas 01–09 | `/apostilas/0X-....html` |
 
-### Apostilas (`/apostilas`)
+## Conteúdo do repositório
 
-| Nº | Público | Arquivo |
-|----|---------|---------|
-| 01 | Equipe Gestora | `01-equipe-gestora.html` |
-| 02 | Professores | `02-professores.html` |
-| 03 | Funcionários efetivos do Estado | `03-funcionarios-efetivos.html` |
-| 04 | Funcionários terceirizados | `04-funcionarios-terceirizados.html` |
-| 05 | Grêmio Estudantil | `05-gremio-estudantil.pdf` *(PDF da escola)* |
-| 06 | Alunos | `06-alunos.html` |
-| 07 | Líderes de Sala | `07-lideres-de-sala.html` |
-| 08 | Conselho de Escola | `08-conselho-de-escola.html` |
-| 09 | APM | `09-apm.html` |
+| Arquivo | Descrição |
+|---------|-----------|
+| `index.html` | Página principal com as 9 apostilas (cards clicáveis) |
+| `quiz.html` | Quiz interativo com sons e confetti |
+| `apostilas/01-equipe-gestora.html` | Equipe Gestora |
+| `apostilas/02-professores.html` | Professores |
+| `apostilas/03-funcionarios-efetivos.html` | Funcionários efetivos |
+| `apostilas/04-funcionarios-terceirizados.html` | Funcionários terceirizados |
+| `apostilas/05-gremio-estudantil.html` | Grêmio Estudantil |
+| `apostilas/06-alunos.html` | Alunos |
+| `apostilas/07-lideres-de-sala.html` | Líderes de Sala |
+| `apostilas/08-conselho-de-escola.html` | Conselho de Escola |
+| `apostilas/09-apm.html` | APM |
 
 ## Farol de responsabilidades
 
-- 🟢 **Eu executo** — o que o público deve aprender e fazer
-- 🟡 **Eu participo** — o que apoia, mas não conduz sozinho
-- 🔴 **Não é minha responsabilidade** — o que pertence a outro papel
+- 🟢 **Eu executo** — o que o público deve aprender e fazer  
+- 🟡 **Eu participo** — o que apoia, mas não conduz sozinho  
+- 🔴 **Não é minha responsabilidade** — o que pertence a outro papel  
 
-## Deploy (Netlify)
+## Como ativar o GitHub Pages (só uma vez)
 
-1. Mantenha a pasta `apostilas/` com os arquivos HTML (e o PDF do Grêmio).
-2. Use `conviva_maya_apostilas_protocolo_179.html` como página das apostilas (ou renomeie para `index.html` se for a home).
-3. Arraste a pasta do projeto no Netlify ou conecte este repositório GitHub.
+1. Abra o repositório: https://github.com/MayaAliceEkman/conviva  
+2. Vá em **Settings** → **Pages** (menu lateral).  
+3. Em **Source**, escolha **Deploy from a branch**.  
+4. Branch: **main** · pasta: **/ (root)**.  
+5. Clique em **Save**.  
+6. Em 1–2 minutos o site sobe em:  
+   **https://mayaaliceekman.github.io/conviva/**
+
+Pronto — não precisa mais do Netlify.
 
 ## Base legal / pedagógica
 
