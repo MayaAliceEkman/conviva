@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz Conviva Maya — Protocolo 179</title>
+<style>
+:root{
+  --bg:#050d1a;
+  --card:#0c1e35;
+  --card2:#122a47;
+  --line:#1e3a5f;
+  --text:#f0f6ff;
+  --muted:#8fa8c4;
+  --blue:#3bb0ff;
+  --blue2:#7b6cff;
+  --green:#22d67b;
+  --yellow:#ffc93c;
+  --red:#ff4d6d;
+  --glow:0 0 40px rgba(59,176,255,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%,#1a3a6b 0%,transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%,#2a1a5c 0%,transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%,#0a2a3a 0%,transparent 50%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+  padding:20px 14px 60px;
+  overflow-x:hidden;
+}
+.wrap{max-width:720px;margin:0 auto;position:relative}
+
+/* Header */
+.head{text-align:center;padding:28px 10px 18px}
+.brand{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,176,255,.12);
+  border:1px solid rgba(59,176,255,.3);
+  padding:6px 14px;border-radius:999px;
+  font-size:11px;font-weight:800;letter-spacing:2.5px;
+  color:#8dceff;text-transform:uppercase;
+}
+.head h1{
+  font-size:clamp(36px,8vw,58px);
+  font-weight:900;line-height:.95;
+  margin:18px 0 10px;
+  background:linear-gradient(135deg,#fff 30%,#7ec8ff 70%,#b794ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.sub{color:var(--muted);font-size:15px;line-height:1.4}
+
+/* Progress */
+.barbox{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(12,30,53,.8);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--line);
+  padding:12px 16px;border-radius:16px;
+  margin:18px 0 22px;
+}
+.barbox b{font-size:13px;color:#9ec8ef;white-space:nowrap;font-weight:700}
+.bar{
+  flex:1;height:8px;background:#152a45;
+  border-radius:99px;overflow:hidden;
+}
+.bar i{
+  display:block;height:100%;width:0%;
+  background:linear-gradient(90deg,var(--blue),var(--blue2));
+  border-radius:99px;
+  transition:width .45s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 12px rgba(59,176,255,.5);
+}
+
+/* Card */
+.card{
+  background:linear-gradient(160deg,var(--card2) 0%,var(--card) 100%);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px 26px;
+  box-shadow:0 24px 60px rgba(0,0,0,.45),var(--glow);
+  position:relative;
+  overflow:hidden;
+  animation:fadeIn .4s ease;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--blue2),#ff6bcb);
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.tag{
+  display:inline-block;
+  color:#7ec8ff;font-size:11px;font-weight:800;
+  letter-spacing:1.8px;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.q{
+  font-size:clamp(20px,4.2vw,28px);
+  font-weight:700;line-height:1.28;
+  margin:6px 0 22px;
+}
+
+/* Options */
+.opts{display:grid;gap:11px}
+.opt{
+  display:flex;align-items:flex-start;gap:14px;
+  width:100%;padding:15px 16px;
+  border:1.5px solid #2a4a6e;
+  background:rgba(16,41,67,.7);
+  color:var(--text);
+  border-radius:14px;
+  text-align:left;font-size:15.5px;line-height:1.35;
+  cursor:pointer;
+  transition:all .22s ease;
+  position:relative;
+}
+.opt:hover:not(:disabled){
+  background:rgba(30,70,110,.8);
+  border-color:#4a90c4;
+  transform:translateX(4px);
+}
+.opt:disabled{cursor:default}
+.opt b{
+  flex-shrink:0;
+  width:30px;height:30px;
+  border-radius:9px;
+  background:#1a4060;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#9ecfff;
+  transition:all .2s;
+}
+.opt.correct{
+  background:rgba(13,58,42,.85)!important;
+  border-color:var(--green)!important;
+  box-shadow:0 0 0 1px rgba(34,214,123,.3),0 8px 24px rgba(34,214,123,.15);
+  animation:pulseGreen .5s ease;
+}
+.opt.correct b{background:var(--green);color:#052015}
+.opt.wrong{
+  background:rgba(70,20,35,.8)!important;
+  border-color:var(--red)!important;
+  animation:shake .4s ease;
+}
+.opt.wrong b{background:var(--red);color:#fff}
+@keyframes pulseGreen{
+  0%{box-shadow:0 0 0 0 rgba(34,214,123,.5)}
+  70%{box-shadow:0 0 0 12px rgba(34,214,123,0)}
+  100%{box-shadow:0 0 0 0 rgba(34,214,123,0)}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+
+/* Feedback */
+.fb{
+  display:none;margin-top:16px;padding:14px 16px;
+  background:rgba(8,26,44,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  color:#d4e6f7;font-size:14.5px;line-height:1.45;
+  animation:fadeIn .3s ease;
+}
+.fb.show{display:block}
+.fb strong{display:block;margin-bottom:4px;font-size:15px}
+.fb.ok strong{color:var(--green)}
+.fb.no strong{color:#ff8a9a}
+
+/* Hint */
+.hint{
+  margin-top:14px;
+  border:1px dashed #2e5275;
+  border-radius:12px;
+  padding:10px 14px;
+  color:#a0bdd8;font-size:14px;
+}
+.hint summary{
+  cursor:pointer;color:#7ec8ff;font-weight:700;
+  list-style:none;user-select:none;
+}
+.hint summary::-webkit-details-marker{display:none}
+.hint[open] summary{margin-bottom:6px}
+
+/* Buttons */
+.next,.again{
+  display:none;margin-top:18px;
+  border:0;border-radius:12px;
+  padding:14px 24px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;font-weight:800;font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(59,176,255,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.next:hover,.again:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(59,176,255,.4);
+}
+.next.show{display:inline-block}
+
+/* Result */
+.result{
+  display:none;text-align:center;
+  padding:36px 24px;
+  animation:fadeIn .5s ease;
+}
+.result.show{display:block}
+.result .tag{margin-bottom:12px}
+.score{
+  font-size:clamp(56px,12vw,80px);
+  font-weight:900;
+  background:linear-gradient(135deg,#fff,#7ec8ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+  margin:8px 0;
+}
+.result h2{font-size:24px;margin:8px 0 6px}
+.result p{color:var(--muted);font-size:15px;max-width:360px;margin:0 auto 22px}
+.again{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--yellow),#ff9f1c);
+  color:#1a1400;
+  box-shadow:0 8px 24px rgba(255,201,60,.35);
+}
+.again:hover{box-shadow:0 12px 28px rgba(255,201,60,.45)}
+
+/* Confetti particles */
+.confetti{
+  position:fixed;inset:0;pointer-events:none;z-index:99;
+  overflow:hidden;
+}
+.confetti span{
+  position:absolute;top:-12px;
+  width:8px;height:8px;border-radius:2px;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(105vh) rotate(720deg);opacity:0}
+}
+
+.source{
+  text-align:center;color:#5a7390;
+  font-size:11px;margin-top:22px;line-height:1.4;
+}
+
+@media(max-width:560px){
+  .card{padding:20px 16px}
+  .opt{font-size:14.5px;padding:13px 12px}
+  .q{margin-bottom:16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="brand">✦ Escola Maya Alice Ekman · Conviva Maya</div>
+    <h1>QUIZ<br>PROTOCOLO 179</h1>
+    <div class="sub">10 perguntas · 4 alternativas · apenas 1 correta</div>
+  </header>
+
+  <div class="barbox" id="barbox">
+    <b id="count">Pergunta 1 de 10</b>
+    <div class="bar"><i id="progress"></i></div>
+  </div>
+
+  <main class="card" id="quiz"></main>
+
+  <section class="card result" id="result">
+    <div class="tag">Resultado final</div>
+    <div class="score" id="score"></div>
+    <h2 id="rt"></h2>
+    <p id="rx"></p>
+    <button class="again" onclick="restart()">↺ Fazer novamente</button>
+  </section>
+
+  <div class="source">Baseado no DOC – Conviva Protocolo 179 – 3ª versão, SEDUC-SP.</div>
+</div>
+
+<script>
+const Q=[
+['Qual é uma função do registro na Plataforma Conviva?',['Registrar apenas por formalidade','Apoiar transparência, continuidade, planejamento, prevenção e acompanhamento','Substituir a rede de proteção','Registrar somente casos policiais'],1],
+['Quem realiza o registro na Plataforma Conviva, conforme as orientações de acesso?',['Qualquer estudante','Somente a polícia','Profissionais responsáveis, com acesso por conta individual Gov.br','Somente familiares'],2],
+['Qual postura é indicada no acolhimento inicial?',['Fazer perguntas repetidas','Ouvir com calma, atenção e sem julgamentos, evitando revitimização','Confrontar imediatamente as partes','Compartilhar o relato para confirmar os fatos'],1],
+['O que significa evitar a revitimização?',['Evitar procedimentos repetidos ou invasivos que façam a vítima reviver a violência desnecessariamente','Não registrar ocorrências','Deixar estudantes investigarem','Divulgar o caso para agilizar a solução'],0],
+['Quando a situação ultrapassa a capacidade da escola e tem alta gravidade ou urgência, quem pode ser acionado pela URE?',['Somente o Grêmio','A Central Conviva','Somente a APM','Somente líderes de sala'],1],
+['Qual alternativa apresenta exemplos de serviços que podem integrar a rede de proteção?',['UBS, CRAS, CREAS, CAPS e Conselho Tutelar','Somente a escola e a APM','Somente polícia e Grêmio','Somente professores'],0],
+['O que o Protocolo orienta sobre confidencialidade?',['Divulgar em grupos se houver interesse','Usar comentários para confirmar fatos','Tratar informações com responsabilidade, restringindo acesso e evitando exposição indevida','Nunca comunicar suspeitas às autoridades'],2],
+['Quem é apontado como primeiro agente de identificação, acolhimento e encaminhamento de vulnerabilidades na escola?',['A escola, por meio de sua equipe','Somente o Conselho Tutelar','Somente o Grêmio','Somente a polícia'],0],
+['Qual ideia central aparece no trabalho de convivência?',['É responsabilidade exclusiva do ponto focal do Conviva','É construída com participação da comunidade escolar e articulação entre atores','Começa somente depois de uma crise','A participação estudantil deve ser evitada'],1],
+['Em uma situação muito acalorada, qual procedimento de escuta é indicado?',['Colocar todos frente a frente imediatamente','Publicar o caso para ouvir opiniões','Ouvir as partes individualmente, evitando confronto durante a escuta','Deixar os envolvidos decidirem sozinhos'],2]
+];
+
+const H=[
+'Pense no que a escola precisa para acompanhar uma situação ao longo do tempo.',
+'Observe quem possui responsabilidade institucional pelo registro.',
+'A primeira escuta deve proteger a pessoa e evitar nova exposição.',
+'A ideia é proteger a pessoa sem deixar de tomar as providências necessárias.',
+'Trata-se de uma instância institucional de apoio aos casos que ultrapassam a capacidade da escola.',
+'Pense nos diferentes serviços públicos envolvidos na proteção de crianças e adolescentes.',
+'Confidencialidade protege a pessoa, mas não significa esconder uma violação de direitos.',
+'Pense em quem está no cotidiano da unidade e identifica primeiro muitas situações.',
+'O documento trata convivência como trabalho coletivo.',
+'Quando as emoções estão elevadas, a escuta deve reduzir o confronto.'
+];
+
+const F=[
+['O registro apoia transparência, continuidade, planejamento, prevenção e acompanhamento.','Essa é a finalidade destacada no Protocolo.','A Plataforma não substitui os encaminhamentos da rede.','O registro não se limita a casos policiais.'],
+['O registro é atribuição de profissionais responsáveis.','O acesso não é restrito à polícia.','O documento orienta acesso por conta individual Gov.br dos profissionais responsáveis.','Familiares não são indicados como responsáveis pelo registro.'],
+['Perguntas repetidas e invasivas podem aumentar a revitimização.','O Protocolo orienta calma, escuta atenta, imparcialidade e ausência de julgamentos.','A orientação é evitar confronto durante a escuta.','A exposição em grupos não faz parte do acolhimento responsável.'],
+['Essa é a definição prática de evitar revitimização apresentada no material.','Evitar revitimização não significa deixar de registrar ou encaminhar.','Estudantes não conduzem investigação de ocorrências graves.','Exposição desnecessária pode prejudicar a proteção.'],
+['O Grêmio participa da comunidade, mas não substitui o fluxo institucional.','A URE pode acionar a Central Conviva em casos de alta gravidade ou urgência que ultrapassem a capacidade da escola.','A APM não substitui a estrutura de proteção.','Líderes de sala não conduzem esse fluxo.'],
+['O Protocolo cita esses serviços como exemplos de articulação da rede de proteção.','A rede não se limita à escola e à APM.','Grêmio e polícia não são os únicos componentes possíveis da rede.','Professores não constituem sozinhos a rede de proteção.'],
+['Divulgar relatos pode expor pessoas.','Comentários e especulações não substituem procedimentos responsáveis.','O documento orienta restringir acesso e evitar exposição, comentários e fofocas.','Confidencialidade não significa omissão diante de violação de direitos.'],
+['A escola e sua gestão são apresentadas como primeiro agente de identificação, acolhimento e encaminhamento.','O Conselho Tutelar integra a rede, mas não é o único primeiro agente dentro da escola.','O Grêmio não substitui a equipe responsável pelos encaminhamentos.','A polícia é acionada em situações específicas, não em todas as vulnerabilidades.'],
+['O documento diz que o trabalho não é exclusivo do ponto focal.','A participação da comunidade escolar é destacada.','A prevenção faz parte do trabalho antes das crises.','A participação estudantil é reconhecida como parte da convivência.'],
+['Confronto imediato aumenta a tensão.','Publicar o caso não é procedimento de escuta.','O documento orienta ouvir as partes individualmente em situações aquecidas.','A condução não deve ser transferida para uma decisão informal dos envolvidos.']
+];
+
+let n=0,s=0,done=false;
+
+/* ---- Sons (Web Audio API) ---- */
+function playCorrectSound(){
+  try{
+    const A=window.AudioContext||window.webkitAudioContext;
+    if(!A)return;
+    const c=new A(),t=c.currentTime;
+    // acorde ascendente alegre
+    [523.25,659.25,783.99,1046.5].forEach((f,i)=>{
+      const o=c.createOscillator(),g=c.createGain();
+      const z=t+i*0.08;
+      o.type='sine';
+      o.frequency.setValueAtTime(f,z);
+      g.gain.setValueAtTime(0.0001,z);
+      g.gain.exponentialRampToValueAtTime(0.22,z+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,z+0.28);
+      o.connect(g);g.connect(c.destination);
+      o.start(z);o.stop(z+0.3);
+    });
+    setTimeout(()=>c.close(),600);
+  }catch(e){}
+}
+
+function playWrongSound(){
+  try{
+    const A=window.AudioContext||window.webkitAudioContext;
+    if(!A)return;
+    const c=new A(),t=c.currentTime;
+    const o=c.createOscillator(),g=c.createGain();
+    o.type='triangle';
+    o.frequency.setValueAtTime(220,t);
+    o.frequency.exponentialRampToValueAtTime(110,t+0.25);
+    g.gain.setValueAtTime(0.15,t);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.3);
+    o.connect(g);g.connect(c.destination);
+    o.start(t);o.stop(t+0.32);
+    setTimeout(()=>c.close(),400);
+  }catch(e){}
+}
+
+function playWinSound(){
+  try{
+    const A=window.AudioContext||window.webkitAudioContext;
+    if(!A)return;
+    const c=new A(),t=c.currentTime;
+    [523,659,784,1047,1319].forEach((f,i)=>{
+      const o=c.createOscillator(),g=c.createGain();
+      const z=t+i*0.1;
+      o.type='sine';
+      o.frequency.setValueAtTime(f,z);
+      g.gain.setValueAtTime(0.0001,z);
+      g.gain.exponentialRampToValueAtTime(0.2,z+0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001,z+0.4);
+      o.connect(g);g.connect(c.destination);
+      o.start(z);o.stop(z+0.42);
+    });
+    setTimeout(()=>c.close(),900);
+  }catch(e){}
+}
+
+/* ---- Confetti ---- */
+function confetti(){
+  const box=document.createElement('div');
+  box.className='confetti';
+  document.body.appendChild(box);
+  const colors=['#3bb0ff','#7b6cff','#22d67b','#ffc93c','#ff4d6d','#ff6bcb','#fff'];
+  for(let i=0;i<60;i++){
+    const s=document.createElement('span');
+    s.style.left=Math.random()*100+'%';
+    s.style.background=colors[i%colors.length];
+    s.style.width=(6+Math.random()*8)+'px';
+    s.style.height=(6+Math.random()*8)+'px';
+    s.style.animationDuration=(1.5+Math.random()*2)+'s';
+    s.style.animationDelay=(Math.random()*0.4)+'s';
+    s.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    box.appendChild(s);
+  }
+  setTimeout(()=>box.remove(),4000);
+}
+
+/* ---- Quiz logic ---- */
+function render(){
+  done=false;
+  const x=Q[n];
+  document.getElementById('count').textContent=`Pergunta ${n+1} de 10`;
+  document.getElementById('progress').style.width=((n)/10*100)+'%';
+  document.getElementById('quiz').innerHTML=`
+    <div class="tag">Pergunta ${n+1}</div>
+    <div class="q">${x[0]}</div>
+    <div class="opts">${x[1].map((a,i)=>`
+      <button class="opt" onclick="ans(${i})">
+        <b>${'ABCD'[i]}</b>
+        <span>${a}</span>
+      </button>`).join('')}
+    </div>
+    <div class="fb" id="fb"></div>
+    <details class="hint">
+      <summary>💡 Ver uma dica</summary>
+      <div>${H[n]}</div>
+    </details>
+    <button class="next" id="next" onclick="next()">${n===9?'Ver resultado →':'Próxima pergunta →'}</button>
+  `;
+}
+
+function ans(i){
+  if(done)return;
+  done=true;
+  const x=Q[n];
+  const bs=document.querySelectorAll('.opt');
+  bs.forEach((b,j)=>{
+    b.disabled=true;
+    if(j===x[2])b.classList.add('correct');
+    if(j===i&&i!==x[2])b.classList.add('wrong');
+  });
+
+  const fb=document.getElementById('fb');
+  if(i===x[2]){
+    s++;
+    playCorrectSound();
+    fb.className='fb show ok';
+    fb.innerHTML=`<strong>✓ Resposta correta!</strong>${F[n][i]}`;
+  }else{
+    playWrongSound();
+    fb.className='fb show no';
+    fb.innerHTML=`<strong>↗ Vamos revisar</strong>${F[n][i]}`;
+  }
+  document.getElementById('next').classList.add('show');
+}
+
+function next(){
+  if(n<9){
+    n++;
+    render();
+  }else{
+    document.getElementById('quiz').style.display='none';
+    document.getElementById('barbox').style.display='none';
+    document.getElementById('progress').style.width='100%';
+    const r=document.getElementById('result');
+    r.classList.add('show');
+    document.getElementById('score').textContent=s+'/10';
+    let t,msg;
+    if(s>=9){t='Excelente! 🏆';msg='Você dominou o Protocolo 179. Parabéns!';playWinSound();confetti()}
+    else if(s>=7){t='Muito bom! ⭐';msg='Ótimo desempenho. Revise as que errou e tente de novo.';playWinSound()}
+    else if(s>=5){t='Bom começo! 👍';msg='Continue praticando para fixar os conceitos.'}
+    else{t='Vamos praticar! 💪';msg='Revise as questões e tente novamente.'}
+    document.getElementById('rt').textContent=t;
+    document.getElementById('rx').textContent=msg;
+  }
+}
+
+function restart(){
+  n=0;s=0;
+  document.getElementById('quiz').style.display='block';
+  document.getElementById('barbox').style.display='flex';
+  document.getElementById('result').classList.remove('show');
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
